@@ -1,7 +1,7 @@
 public class _459 {
 }
 
-class Solution {
+class Solution_459 {
     public boolean repeatedSubstringPattern(String s) {
         if (s.length() == 1) {
             return false;
