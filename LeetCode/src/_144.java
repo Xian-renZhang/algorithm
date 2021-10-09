@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 public class _144 {
@@ -27,6 +29,8 @@ class TreeNode {
 }
 
 class Solution_144 {
+
+    //region 递归
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         traversal(root, list);
@@ -42,4 +46,31 @@ class Solution_144 {
         traversal(root.left, list);
         traversal(root.right, list);
     }
+    //endregion
+
+    //region 迭代
+    public List<Integer> preorderTraversal_iteratively(TreeNode root) {
+        Deque<TreeNode> deque = new LinkedList<>();
+        List<Integer> list = new ArrayList<>();
+
+        if (root == null) {
+            return list;
+        }
+
+        deque.push(root);
+        while (!deque.isEmpty()) {
+            TreeNode node = deque.pop();
+            list.add(node.val);
+            if (node.right != null) {
+                deque.push(node.right);
+            }
+            if (node.left != null) {
+                deque.push(node.left);
+            }
+        }
+
+        return list;
+    }
+    //endregion
+
 }
